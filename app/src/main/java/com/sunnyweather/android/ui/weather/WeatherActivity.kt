@@ -57,10 +57,23 @@ class WeatherActivity : AppCompatActivity() {
                 Toast.makeText(this, "无法成功获取天气信息", Toast.LENGTH_SHORT).show()
                 result.exceptionOrNull()?.printStackTrace()
             }
+            // 只要数据变动，就停止刷新
+            swipeRefresh.isRefreshing = false
         })
+        swipeRefresh.setColorSchemeResources(com.google.android.material.R.color.design_dark_default_color_primary)
+        refreshWeather()
+        swipeRefresh.setOnRefreshListener {
+            // 手动开启刷新
+            refreshWeather()
+        }
 
         // 刷新天气
         viewModel.refreshWeather(viewModel.locationLng, viewModel.locationLat)
+    }
+
+    fun refreshWeather(){
+        viewModel.refreshWeather(viewModel.locationLng, viewModel.locationLat)
+        swipeRefresh.isRefreshing = true
     }
 
     private fun showWeatherInfo(weather: Weather) {
