@@ -23,7 +23,7 @@ object SunnyWeatherNetwork {
     // await()函数会将解析出来的数据模型对象取出并返回，同时恢复当前的协程的执行。searchPlace()函数在得到await()函数的返回值
     // 后会将该数据再返回到上一层。
     suspend fun searchPlace(city: String): PlaceResponse{
-        Log.d("ForTest", "${placeService.searchPlaces(city).await()}")
+        Log.d("ForTest", "Place的查询结果为：${placeService.searchPlaces(city).await()}")
         return placeService.searchPlaces(city).await()
     }
 
