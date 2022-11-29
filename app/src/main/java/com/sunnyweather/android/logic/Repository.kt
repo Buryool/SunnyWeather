@@ -21,6 +21,7 @@ object Repository {
      * @param block SuspendFunction0<Result<T>>
      * @return LiveData<Result<T>>
      */
+    /*因为要改写的liveData()方法的代码块中是有挂起函数上下文的这里要将Lambda表达式用suspend声明，使其具有挂起函数上下文*/
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) = liveData<Result<T>>(context) {
         val result = try {
             block()
