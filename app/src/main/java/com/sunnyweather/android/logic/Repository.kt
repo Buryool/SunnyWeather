@@ -36,7 +36,6 @@ object Repository {
 
     fun searchPlaces(city: String) = fire(Dispatchers.IO){// 在子线程中以高并发形式运行
         val placeResponse = SunnyWeatherNetwork.searchPlace(city)
-        Log.d("ForTest", "服务器响应状态为：${placeResponse.status}")
         if (placeResponse.status == "ok") { // 如果服务器响应结果为ok
             val places = placeResponse.places
             Result.success(places)

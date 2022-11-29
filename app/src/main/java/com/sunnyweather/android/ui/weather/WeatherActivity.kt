@@ -58,7 +58,6 @@ class WeatherActivity : AppCompatActivity() {
             val weather = result.getOrNull()
             if (weather != null){
                 showWeatherInfo(weather)
-                Log.d("ForTest", "$weather 打印完毕")
 
             } else {
                 Toast.makeText(this, "无法成功获取天气信息", Toast.LENGTH_SHORT).show()
@@ -106,7 +105,6 @@ class WeatherActivity : AppCompatActivity() {
         placeName.text = viewModel.placeName
         val realtime = weather.realTime
         val daily = weather.daily
-        Log.d("ForTest", "daily:${daily}")
         // 填充now.xml布局中的数据
         val currentTempText = "${realtime.temperature.toInt()}℃"
         currentTemp.text = currentTempText
@@ -135,7 +133,6 @@ class WeatherActivity : AppCompatActivity() {
         }
         // 填充life_index.xml布局中的数据
         val lifeIndex = daily.lifeIndex
-        Log.d("ForTest", "${lifeIndex.coldRisk}")
         coldRiskText.text = lifeIndex.coldRisk[0].desc
         dressingText.text = lifeIndex.dressing[0].desc
         ultravioletText.text = lifeIndex.ultraviolet[0].desc

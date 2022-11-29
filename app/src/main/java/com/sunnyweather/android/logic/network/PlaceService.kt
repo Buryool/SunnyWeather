@@ -11,7 +11,6 @@ import retrofit2.http.Query
  * 用于访问心知天气API的Retrofit接口
  */
 interface PlaceService {
-    // https://api.caiyunapp.com/v2/place?token=8ii2ax5MWpvL45Be&lang=zh_CN...
     @GET("v2/place?token=${SunnyWeatherApplication.TOKEN}&lang=zh_CN")
     fun searchPlaces(@Query("query") city: String): Call<PlaceResponse>
 }
